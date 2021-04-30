@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.VacancyDetailFragment">
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="14dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="35dp"
+        android:src="@drawable/back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="126dp"
+        android:layout_marginTop="30dp"
+        android:text="Vacancy"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Senior Engineering Manager (Content Technologies) - GoFood"
+            android:textColor="@color/black"
+            android:textSize="23sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/ic_detail_vacancy" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20.5dp"
+            android:layout_marginEnd="31dp"
+            android:lineSpacingExtra="5sp"
+            android:text="About The Role \n\n
+GoFood is looking for an experienced technologist with a passion and understanding of distributed engineering to lead its Content Management System vertical. Charter for this vertical is to evolve the domain of GoFood content so that it is able to closely mimic the offline content behaviour for a merchant in a self serve manner and to build state of art search and recommendation capabilities on top of the underlying GoFood content. \n\n
+As vertical lead, you will work with GoFood’s Head of Engineering, Product and Business stakeholders to formulate technology strategies which can provide competitive edge to GoFood. You will work closely with PMs and Tech Leads in Content Management vertical to realise this strategy. \n\n
+What You Will Do \n
+• Work with the Head of Engineering, Head of Product and other Business stakeholders of GoFood to formulate technology strategies. \n
+• Work with tech leads of teams in GoFood Content Management vertical to deliver resilient technology solutions to achieve business goals. \n
+• Oversee system design, architecture and graceful evolution for various services owned by GoFood CMS vertical. \n
+• Be responsible for overall uptime and availability of GoFood CMS. \n
+• Be responsible for overall delivery timelines of different product initiatives which are part of GoFood CMS. \n
+• Work with GoFood HoE to define products/SOPs which improve the productivity of development teams and drive adoption of the same within CMS vertical and larger Gojek ecosystem. \n
+• Communicate technology and business strategy to all teams in the GoFood CMS vertical."
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

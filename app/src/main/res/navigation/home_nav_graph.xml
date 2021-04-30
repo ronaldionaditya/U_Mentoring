@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mobile.umentoring.adapter.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.mobile.umentoring.adapter.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/vacancyListFragment"
+        android:name="com.mobile.umentoring.adapter.VacancyListFragment"
+        android:label="fragment_vacancy_list"
+        tools:layout="@layout/fragment_vacancy_list" />
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="com.mobile.umentoring.adapter.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+</navigation>
