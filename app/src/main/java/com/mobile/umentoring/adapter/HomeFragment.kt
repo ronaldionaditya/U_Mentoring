@@ -9,12 +9,15 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide.init
 import com.daimajia.slider.library.Animations.DescriptionAnimation
 import com.daimajia.slider.library.SliderLayout
 import com.daimajia.slider.library.SliderTypes.BaseSliderView
 import com.daimajia.slider.library.SliderTypes.TextSliderView
 import com.daimajia.slider.library.Tricks.ViewPagerEx
 import com.mobile.umentoring.R
+import com.mobile.umentoring.adapter.recyclerView.Leaderboard
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -64,6 +67,8 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener, ViewPager
         slider.setCustomAnimation(DescriptionAnimation())
         slider.setDuration(5000)
         slider.addOnPageChangeListener(this)
+
+
     }
 
     override fun onSliderClick(slider: BaseSliderView?) {

@@ -50,6 +50,9 @@ dependencies {
     //RecyclerView
     implementation "androidx.recyclerview:recyclerview:1.2.0"
 
+    //CardView
+    implementation "androidx.cardview:cardview:1.0.0"
+
     //CircleImage (gambar jadi bulat)
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
@@ -66,10 +69,27 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
 
-
     //Image Slider
     implementation 'com.squareup.picasso:picasso:2.3.2'
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'com.daimajia.slider:library:1.1.5@aar'
 
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //Okhttp logging interceptor
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    //Rx java
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
+
+    // lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+
+    implementation 'com.google.code.gson:gson:2.8.5'
 }
