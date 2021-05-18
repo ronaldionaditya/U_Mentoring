@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="153dp"
+        android:layout_height="187dp"
         android:layout_margin="8dp"
         android:background="@drawable/background_portofolio">
 
         <ImageView
-            android:id="@+id/ivPortfolio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/ivPortImg"
+            android:layout_width="153dp"
+            android:layout_height="89dp"
             android:src="@drawable/ig_portofolio" />
 
         <androidx.appcompat.widget.AppCompatButton
@@ -25,6 +25,7 @@
             android:paddingStart="23.5dp" />
 
         <TextView
+            android:id="@+id/tvBatchPort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivPortfolio"
@@ -34,26 +35,19 @@
             android:textSize="12dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tvNamaPort"
+            android:layout_width="112dp"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivPortfolio"
             android:layout_marginStart="12dp"
             android:layout_marginTop="40dp"
-            android:text="UI/UX Design"
+            android:text="UI/UX Design Bassic Level"
             android:textColor="@color/black"
+            android:layout_marginBottom="20dp"
             android:textSize="16dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ivPortfolio"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="59dp"
-            android:layout_marginBottom="20dp"
-            android:text="Bassic Level"
-            android:textColor="@color/black"
-            android:textSize="16dp" />
+
 
     </RelativeLayout>
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>

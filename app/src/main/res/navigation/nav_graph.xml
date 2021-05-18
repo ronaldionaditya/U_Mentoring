@@ -18,4 +18,9 @@
         android:name="com.mobile.umentoring.adapter.MenuActivity"
         android:label="activity_menu"
         tools:layout="@layout/activity_menu" />
+    <fragment
+        android:id="@+id/leaderboardFragment"
+        android:name="com.mobile.umentoring.view.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" />
 </navigation>

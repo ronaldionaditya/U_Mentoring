@@ -2,6 +2,7 @@ package com.mobile.umentoring.network
 
 import com.mobile.umentoring.cons.Constants
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,8 +11,16 @@ import java.util.concurrent.TimeUnit
 class ConfigNetwork {
 
     companion object {
+
+        //Todo initialisasi retrofit
         fun getRetrofit(): ConfigApi {
+
+            //interceptor untuk mengetahui error kalau komunikasi server
+            val interceptor = HttpLoggingInterceptor()
+            interceptor.level  = HttpLoggingInterceptor.Level.BODY
+
             val builder = OkHttpClient.Builder()
+                .addInterceptor(interceptor)
 
             val client = builder.build()
             var constants: Constants?=null

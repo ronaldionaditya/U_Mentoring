@@ -1,6 +1,7 @@
 package com.mobile.umentoring.view
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,7 +15,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.mobile.umentoring.R
 import com.mobile.umentoring.adapter.HomeFragment
+import com.mobile.umentoring.cons.Constants
 import com.mobile.umentoring.model.ResponseUser
+import com.mobile.umentoring.pref.PreferencesHelper
 import kotlinx.android.synthetic.main.fragment_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,9 +26,11 @@ import retrofit2.Response
 
 class LoginFragment : Fragment() {
 
-
     //Todo deklarasi ViewModel
     lateinit var viewModel: com.mobile.umentoring.viewModel.ViewModel
+
+//    //Todo login session SharedPreferences
+//    lateinit var sharedpref : PreferencesHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +39,7 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
 
+//        sharedpref = PreferencesHelper(this)
 
     }
 
@@ -49,10 +55,23 @@ class LoginFragment : Fragment() {
             var password = etPassword.text.toString()
 
             viewModel.login(email, password)
-
-
         }
+
+
+//        if (sharedpref.getBoolean(Constants.PREF_IS_LOGIN)){
+//            startActivity(Intent(this))
+//        }
+
+
     }
+
+//    override fun onStart() {
+//        super.onStart()
+//        if (sharedpref.getBoolean(Constants.PREF_IS_LOGIN)){
+//            startActivity(Intent(this, ))
+//        }
+//    }
+
 
     private fun pengamatan() {
         viewModel.loginResponse().observe(viewLifecycleOwner, Observer { loginResponse(it) })
@@ -89,7 +108,9 @@ class LoginFragment : Fragment() {
         Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
     }
 
-
+    fun getSharedPreferences(prefsName: String, modePrivate: Int): SharedPreferences {
+        TODO("Not yet implemented")
+    }
 
 
 }

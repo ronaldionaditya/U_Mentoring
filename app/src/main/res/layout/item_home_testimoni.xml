@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="207dp"
@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/profile_image"
+            android:id="@+id/ivTestImg"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
@@ -22,6 +22,7 @@
             app:civ_border_width="0dp" />
 
         <TextView
+            android:id="@+id/tvTestBatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -30,6 +31,7 @@
             android:textSize="10sp" />
 
         <TextView
+            android:id="@+id/tvTestName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -38,8 +40,9 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tvTestDesk"
             android:layout_width="120dp"
-            android:layout_height="55dp"
+            android:layout_height="28dp"
             android:layout_gravity="center"
             android:layout_marginTop="4dp"
             android:text="“Highly recommended for studying”"

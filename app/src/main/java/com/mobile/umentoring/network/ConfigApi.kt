@@ -1,8 +1,8 @@
 package com.mobile.umentoring.network
 
-import com.mobile.umentoring.model.ResponseUser
+import com.mobile.umentoring.model.*
+import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Single
 import retrofit2.http.*
 
 interface ConfigApi {
@@ -13,4 +13,13 @@ interface ConfigApi {
         @Query("password") password: String
     ): Observable<ResponseUser>
 
+    //Todo mengambil api program dari repo
+    @GET("getProgram")
+    fun getApiProgram(): Flowable<ResponseProgram>
+
+    @GET("getPortofolio")
+    fun getApiPortofolio(): Flowable<ResponsePortofolio>
+
+    @GET("getTestimoni")
+    fun getApiTestimoni(): Flowable<ResponseTestimoni>
 }
