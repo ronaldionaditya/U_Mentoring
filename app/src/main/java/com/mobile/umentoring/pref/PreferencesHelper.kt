@@ -6,7 +6,7 @@ import android.content.SharedPreferences
 import com.mobile.umentoring.view.LoginFragment
 
 
-class PreferencesHelper(context: LoginFragment) {
+class PreferencesHelper(context: Context) {
     private val PREFS_NAME = "loginsharedpreference"
     private lateinit var sharedpref: SharedPreferences
     val editor: SharedPreferences.Editor
@@ -40,6 +40,11 @@ class PreferencesHelper(context: LoginFragment) {
     //untuk mendapatkan nilai boolean
     fun getBoolean(key: String): Boolean?{
         return sharedpref.getBoolean(key, false)
+    }
+
+    fun logout(){
+        editor.clear()
+        editor.commit()
     }
 
 }

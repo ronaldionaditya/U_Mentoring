@@ -17,5 +17,27 @@ class MenuActivity : AppCompatActivity() {
         val navController = Navigation.findNavController(this,R.id.home_nav_host_fragment)
         NavigationUI.setupWithNavController(btmNavigation, navController)
 
+//        val homeFragment = HomeFragment()
+//        val infoFragment = InfoFragment()
+//        val vacancyListFragment = VacancyListFragment()
+//        val profileFragment = ProfileFragment()
+
+
+//        btmNavigation.setOnNavigationItemSelectedListener {
+//            when (it.itemId){
+//                R.id.homeFragmentNav -> makeCurrentFragment(homeFragment)
+//                R.id.infoFragmentNav -> makeCurrentFragment(infoFragment)
+//                R.id.vacancyFragmentNav -> makeCurrentFragment(vacancyListFragment)
+//                R.id.profileFragmentNav -> makeCurrentFragment(profileFragment)
+//            }
+//            true
+//        }
+
     }
+//    private fun makeCurrentFragment(fragment: Fragment)=
+//        supportFragmentManager.beginTransaction().apply {
+//            replace(R.id.home_nav_host_fragment, fragment)
+//            commit()
+//        }
+
 }

@@ -30,7 +30,7 @@ class LoginFragment : Fragment() {
     lateinit var viewModel: com.mobile.umentoring.viewModel.ViewModel
 
 //    //Todo login session SharedPreferences
-//    lateinit var sharedpref : PreferencesHelper
+    lateinit var sharedpref : PreferencesHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,16 +39,28 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
 
-//        sharedpref = PreferencesHelper(this)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        sharedpref = PreferencesHelper(requireContext())
+
         viewModel = ViewModelProviders.of(this).get(com.mobile.umentoring.viewModel.ViewModel::class.java)
         pengamatan()
         btnSignIn.setOnClickListener {
+
+            if(etEmail.text?.isNotEmpty()!! && etPassword.text?.isNotEmpty()!!){
+                var constants: Constants? = null
+                constants = Constants()
+                sharedpref.put(constants.PREF_USERNAME, etEmail.text.toString())
+                sharedpref.put(constants.PREF_PASSWORD, etPassword.text.toString())
+                sharedpref.put(constants.PREF_IS_LOGIN, true)
+                Toast.makeText(context, "Berhasil masuk", Toast.LENGTH_SHORT).show()
+
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_loginFragment_to_menuActivity)
+            }
 
             //todo 1 ambil view
             var email = etEmail.text.toString()
@@ -57,20 +69,26 @@ class LoginFragment : Fragment() {
             viewModel.login(email, password)
         }
 
-
-//        if (sharedpref.getBoolean(Constants.PREF_IS_LOGIN)){
-//            startActivity(Intent(this))
-//        }
-
+        tvForgotPass.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_loginFragment_to_forgotFragment)
+        }
 
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//        if (sharedpref.getBoolean(Constants.PREF_IS_LOGIN)){
-//            startActivity(Intent(this, ))
-//        }
-//    }
+    override fun onStart() {
+        super.onStart()
+        var constants: Constants? = null
+        constants = Constants()
+        if (sharedpref.getBoolean(constants.PREF_IS_LOGIN) == true){
+            Navigation.findNavController(requireView())
+                .navigate(R.id.action_loginFragment_to_menuActivity)
+        }
+    }
+
+
+
+
 
 
     private fun pengamatan() {
@@ -108,9 +126,7 @@ class LoginFragment : Fragment() {
         Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
     }
 
-    fun getSharedPreferences(prefsName: String, modePrivate: Int): SharedPreferences {
-        TODO("Not yet implemented")
-    }
+
 
 
 }
