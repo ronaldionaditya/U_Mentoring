@@ -22,4 +22,11 @@ interface ConfigApi {
 
     @GET("getTestimoni")
     fun getApiTestimoni(): Flowable<ResponseTestimoni>
+
+    @GET("profile")
+    fun getApiProfile(
+        @Query("idUser") user: String
+    ): Flowable<ResponseProfile>
+
+
 }

@@ -16,6 +16,7 @@
             android:src="@drawable/ig_portofolio" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPlayPort"
             android:layout_width="54dp"
             android:layout_height="54dp"
             android:layout_centerHorizontal="true"
@@ -28,7 +29,7 @@
             android:id="@+id/tvBatchPort"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivPortfolio"
+            android:layout_below="@+id/btnPlayPort"
             android:layout_marginStart="11dp"
             android:layout_marginTop="20dp"
             android:text="Batch #01"
@@ -38,14 +39,12 @@
             android:id="@+id/tvNamaPort"
             android:layout_width="112dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/ivPortfolio"
+            android:layout_below="@+id/btnPlayPort"
             android:layout_marginStart="12dp"
             android:layout_marginTop="40dp"
             android:text="UI/UX Design Bassic Level"
             android:textColor="@color/black"
-            android:layout_marginBottom="20dp"
             android:textSize="16dp" />
-
 
 
     </RelativeLayout>

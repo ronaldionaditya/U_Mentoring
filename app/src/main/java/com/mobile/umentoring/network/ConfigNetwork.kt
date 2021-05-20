@@ -27,7 +27,7 @@ class ConfigNetwork {
             constants = Constants()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl(constants?.URL)
+                .baseUrl(constants?.BASEURL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())

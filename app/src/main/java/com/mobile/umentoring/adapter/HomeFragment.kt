@@ -31,7 +31,6 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
     lateinit var view: ViewModel
 
     private var listProgram: RecyclerView? = null
-//    private var listPortofolio: RecyclerView? = null
 
 
     override fun onCreateView(
@@ -40,7 +39,6 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -59,24 +57,25 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
         view.panggilApiTest()
 
 
-//        val url_maps = HashMap<String, String>()
-//        url_maps["Hannibal"] = "http://mentoring.barajacoding.or.id/slider/2.jpg"
-//        url_maps["Big Bang Theory"] = "http://mentoring.barajacoding.or.id/slider/3.jpg"
-//        url_maps["House of Cards"] = "http://mentoring.barajacoding.or.id/slider/4.jpg"
-//        url_maps["Game of Thrones"] = "http://mentoring.barajacoding.or.id/slider/5.jpg"
 
-        val file_maps = HashMap<String, Int>()
-        file_maps["Hannibal"] = R.drawable.slider_dua
-        file_maps["Big Bang Theory"] = R.drawable.slider_tiga
-        file_maps["House of Cards"] = R.drawable.slider_empat
-        file_maps["Game of Thrones"] = R.drawable.slider_lima
+        val url_maps = HashMap<String, String>()
+        url_maps["Hannibal"] = "http://mentoring.barajacoding.or.id/slider/2.jpg"
+        url_maps["Big Bang Theory"] = "http://mentoring.barajacoding.or.id/slider/3.jpg"
+        url_maps["House of Cards"] = "http://mentoring.barajacoding.or.id/slider/4.jpg"
+        url_maps["Game of Thrones"] = "http://mentoring.barajacoding.or.id/slider/5.jpg"
 
-        for (name in file_maps.keys) {
+//        val file_maps = HashMap<String, Int>()
+//        file_maps["Hannibal"] = R.drawable.slider_dua
+//        file_maps["Big Bang Theory"] = R.drawable.slider_tiga
+//        file_maps["House of Cards"] = R.drawable.slider_empat
+//        file_maps["Game of Thrones"] = R.drawable.slider_lima
+
+        for (name in url_maps.keys) {
             val textSliderView = TextSliderView(context)
             // initialize a SliderLayout
             textSliderView
                 .description(name)
-                .image(file_maps[name]!!)
+                .image(url_maps[name]!!)
                 .setScaleType(BaseSliderView.ScaleType.Fit)
                 .setOnSliderClickListener(this)
 
@@ -103,8 +102,9 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
     }
 
     private fun showErrorProg(it: Throwable?) {
-        Toast.makeText(context, "Salah", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show()
     }
+
     private fun showSuccessProg(data: ResponseProgram?) {
         Toast.makeText(context, "Success Prog", Toast.LENGTH_SHORT).show()
         var adapter = ProgramAdapter(data?.data)
@@ -113,31 +113,34 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
         rvProgram.adapter = adapter
         showData(data?.data)
     }
+
     private fun showData(data: List<DataItem?>?) {
         listProgram?.adapter = ProgramAdapter(data)
     }
 
 
     //Portofolio
-    private fun attachObservePort(){
+    private fun attachObservePort() {
         view.successPort().observe(viewLifecycleOwner, Observer { showSuccessPort(it) })
         view.errorPort().observe(viewLifecycleOwner, Observer { showErrorPort(it) })
     }
+
     private fun showErrorPort(it: Throwable?) {
         Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
-        Log.e("Error Port",it?.localizedMessage?:"")
+        Log.e("Error Port", it?.localizedMessage ?: "")
     }
-    private fun showSuccessPort(data: ResponsePortofolio?){
+
+    private fun showSuccessPort(data: ResponsePortofolio?) {
         Toast.makeText(context, "Success Port", Toast.LENGTH_SHORT).show()
 
         var dataa = data?.data
-        for (x:Int in dataa?.indices?:0..1 ){
+        for (x: Int in dataa?.indices ?: 0..1) {
             var item = dataa?.get(x)?.participant
-            Log.e("data","$item")
+            Log.e("data", "$item")
 
             var adapter = PortofolioAdapter(dataa)
             rvPortofolio.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false)
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             rvPortofolio.adapter = adapter
         }
 //        showDataPort(dataa?.get(0)?.participant)
@@ -148,15 +151,16 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
 
 
     //Testimoni
-    private fun attachObserveTest(){
+    private fun attachObserveTest() {
         view.successTest().observe(viewLifecycleOwner, Observer { showSuccessTest(it) })
         view.errorTest().observe(viewLifecycleOwner, Observer { showErrorTest(it) })
     }
-    private fun showSuccessTest(data: ResponseTestimoni?){
+
+    private fun showSuccessTest(data: ResponseTestimoni?) {
         Toast.makeText(context, "Success Test", Toast.LENGTH_SHORT).show()
 
         var dataA = data?.data
-        for (x:Int in dataA?.indices?:0..1){
+        for (x: Int in dataA?.indices ?: 0..1) {
             var item = dataA?.get(x)?.user
             Log.e("dataA", "$item")
 
@@ -165,15 +169,12 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             rvTestimoni.adapter = adapter
         }
-
-
     }
-    private fun showErrorTest(it: Throwable?){
+
+    private fun showErrorTest(it: Throwable?) {
         Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
-        Log.e("Error Test" , it?.localizedMessage?:"")
+        Log.e("Error Test", it?.localizedMessage ?: "")
     }
-
-
 
 
     override fun onSliderClick(slider: BaseSliderView?) {
@@ -191,8 +192,6 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
     override fun onPageScrollStateChanged(state: Int) {
 
     }
-
-
 
 
 }

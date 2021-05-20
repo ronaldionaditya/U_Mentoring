@@ -14,13 +14,14 @@
         android:theme="@style/Theme.UMentoring"
         android:usesCleartextTraffic="true">
         <activity android:name=".adapter.MenuActivity"></activity>
-        <activity android:name=".view.SplashScreenActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.SplashScreenActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".view.MainActivity">
+
         </activity>
     </application>
 

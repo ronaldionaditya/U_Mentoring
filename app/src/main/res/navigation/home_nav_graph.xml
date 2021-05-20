@@ -24,14 +24,26 @@
         android:id="@+id/profileFragment2"
         android:name="com.mobile.umentoring.adapter.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment2_to_loginFragment2"
             app:destination="@id/loginFragment2" />
+        <action
+            android:id="@+id/action_profileFragment2_to_profileUpdateFragment"
+            app:destination="@id/profileUpdateFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment2"
         android:name="com.mobile.umentoring.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/profileUpdateFragment"
+        android:name="com.mobile.umentoring.view.ProfileUpdateFragment"
+        android:label="fragment_profile_update"
+        tools:layout="@layout/fragment_profile_update" >
+        <action
+            android:id="@+id/action_profileUpdateFragment_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
+    </fragment>
 </navigation>

@@ -53,6 +53,7 @@
                 app:civ_border_width="0dp" />
 
             <TextView
+                android:id="@+id/tvNamaProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -62,7 +63,7 @@
                 android:textSize="35sp" />
 
             <TextView
-                android:id="@+id/tvAlumni"
+                android:id="@+id/tvLevelProfile"
                 android:layout_width="260dp"
                 android:layout_height="19dp"
                 android:layout_gravity="center"

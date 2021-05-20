@@ -54,7 +54,6 @@ class Repository {
         responseSuccess: (ResponseTestimoni) -> Unit,
         responseError: (Throwable) -> Unit
     ) {
-
         ConfigNetwork.getRetrofit().getApiTestimoni().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
@@ -63,4 +62,19 @@ class Repository {
                 responseError(it)
             })
     }
+
+    fun getApiProfile(
+        user : String,
+        responseSuccess: (ResponseProfile) -> Unit,
+        responseError: (Throwable) -> Unit
+    ) {
+        ConfigNetwork.getRetrofit().getApiProfile(user).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseSuccess(it)
+            }, {
+                responseError(it)
+            })
+    }
+
 }

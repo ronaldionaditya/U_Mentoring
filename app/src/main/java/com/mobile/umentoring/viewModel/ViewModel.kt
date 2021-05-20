@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.mobile.umentoring.model.*
 import com.mobile.umentoring.repository.Repository
 
-class ViewModel:ViewModel() {
+class ViewModel : ViewModel() {
 
     // Todo 2 inisiaslisasi repository
     val repository = Repository()
@@ -29,10 +29,13 @@ class ViewModel:ViewModel() {
     var successTest = MutableLiveData<ResponseTestimoni>()
     var errorTest = MutableLiveData<Throwable>()
 
+    var successProfile = MutableLiveData<ResponseProfile>()
+    var errorProfile = MutableLiveData<Throwable>()
+
     fun login(
         email: String,
         password: String
-    ){
+    ) {
 
         if (email.isEmpty()) {
             emailKosong.value = true
@@ -52,29 +55,29 @@ class ViewModel:ViewModel() {
 
     }
 
-    fun emailIsEmpty():LiveData<Boolean>{
+    fun emailIsEmpty(): LiveData<Boolean> {
         return emailKosong
     }
 
-    fun passwordIsEmpty():LiveData<Boolean>{
+    fun passwordIsEmpty(): LiveData<Boolean> {
         return passwordKosong
     }
 
-    fun loginError():LiveData<Throwable>{
+    fun loginError(): LiveData<Throwable> {
         return errorLogin
     }
 
-    fun loginResponse():LiveData<ResponseUser>{
+    fun loginResponse(): LiveData<ResponseUser> {
         return responLogin
     }
 
 
     //Todo panggil repo api RecyclerView
     //Program
-    fun panggilApiProgram(){
+    fun panggilApiProgram() {
         repo.getApiProgram({
             successProg.value = it
-        },{
+        }, {
             errorProg.value = it
         })
     }
@@ -88,34 +91,56 @@ class ViewModel:ViewModel() {
     }
 
     //Portofolio
-    fun panggilApiPort(){
+    fun panggilApiPort() {
         repo.getApiPortofolio({
-            successPort.value= it
-        },{
-            errorPort.value= it
+            successPort.value = it
+        }, {
+            errorPort.value = it
         })
     }
-    fun successPort(): LiveData<ResponsePortofolio>{
+
+    fun successPort(): LiveData<ResponsePortofolio> {
         return successPort
     }
+
     fun errorPort(): LiveData<Throwable> {
         return errorPort
     }
 
 
     //Testimoni
-    fun panggilApiTest(){
+    fun panggilApiTest() {
         repo.getApiTestimoni({
-            successTest.value= it
-        },{
-            errorTest.value= it
+            successTest.value = it
+        }, {
+            errorTest.value = it
         })
     }
-    fun successTest(): LiveData<ResponseTestimoni>{
+
+    fun successTest(): LiveData<ResponseTestimoni> {
         return successTest
     }
+
     fun errorTest(): LiveData<Throwable> {
         return errorTest
+    }
+
+
+    //Profile
+    fun panggilApiProfile(user: String) {
+        repo.getApiProfile(user, {
+            successProfile.value = it
+        }, {
+            errorProfile.value = it
+        })
+    }
+
+    fun successProfile(): LiveData<ResponseProfile> {
+        return successProfile
+    }
+
+    fun errorProfile(): LiveData<Throwable> {
+        return errorProfile
     }
 
 }

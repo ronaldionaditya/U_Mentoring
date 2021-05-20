@@ -17,7 +17,8 @@ import com.mobile.umentoring.R
 import com.mobile.umentoring.adapter.HomeFragment
 import com.mobile.umentoring.cons.Constants
 import com.mobile.umentoring.model.ResponseUser
-import com.mobile.umentoring.pref.PreferencesHelper
+
+import com.mobile.umentoring.pref.SessionManager
 import kotlinx.android.synthetic.main.fragment_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,8 +30,9 @@ class LoginFragment : Fragment() {
     //Todo deklarasi ViewModel
     lateinit var viewModel: com.mobile.umentoring.viewModel.ViewModel
 
-//    //Todo login session SharedPreferences
-    lateinit var sharedpref : PreferencesHelper
+//    //Todo login session
+    //dengan variabel global agar bisa mengambil data dari class berbeda
+    lateinit var pref : SessionManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,25 +46,13 @@ class LoginFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        sharedpref = PreferencesHelper(requireContext())
+        pref = SessionManager(requireContext())
 
         viewModel = ViewModelProviders.of(this).get(com.mobile.umentoring.viewModel.ViewModel::class.java)
         pengamatan()
         btnSignIn.setOnClickListener {
 
-            if(etEmail.text?.isNotEmpty()!! && etPassword.text?.isNotEmpty()!!){
-                var constants: Constants? = null
-                constants = Constants()
-                sharedpref.put(constants.PREF_USERNAME, etEmail.text.toString())
-                sharedpref.put(constants.PREF_PASSWORD, etPassword.text.toString())
-                sharedpref.put(constants.PREF_IS_LOGIN, true)
-                Toast.makeText(context, "Berhasil masuk", Toast.LENGTH_SHORT).show()
-
-                Navigation.findNavController(requireView())
-                    .navigate(R.id.action_loginFragment_to_menuActivity)
-            }
-
-            //todo 1 ambil view
+            //todo 1 ambil view pada login
             var email = etEmail.text.toString()
             var password = etPassword.text.toString()
 
@@ -76,15 +66,15 @@ class LoginFragment : Fragment() {
 
     }
 
-    override fun onStart() {
-        super.onStart()
-        var constants: Constants? = null
-        constants = Constants()
-        if (sharedpref.getBoolean(constants.PREF_IS_LOGIN) == true){
-            Navigation.findNavController(requireView())
-                .navigate(R.id.action_loginFragment_to_menuActivity)
-        }
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        var constants: Constants? = null
+//        constants = Constants()
+//        if (pref.login(constants.PREF_IS_LOGIN) == true){
+//            Navigation.findNavController(requireView())
+//                .navigate(R.id.action_loginFragment_to_menuActivity)
+//        }
+//    }
 
 
 
@@ -112,6 +102,22 @@ class LoginFragment : Fragment() {
     private fun loginResponse(it: ResponseUser){
         if (it.status==true){
             Toast.makeText(context,it.message, Toast.LENGTH_SHORT).show()
+
+            val session = SessionManager(requireContext())
+            session.id = it.data?.id
+            session.login = true
+
+//            var constants: Constants? = null
+//            constants = Constants()
+////            sharedpref.put(constants.PREF_USERNAME, it.data?.email?:"")
+////            sharedpref.put(constants.PREF_PASSWORD, etPassword.text.toString())
+////            sharedpref.put(constants.PREF_IS_LOGIN, true)
+//
+//            sharedpref.put(constants.PREF_USERNAME, it.data?.email?:"")
+//            sharedpref.put(constants.PREF_PASSWORD, etPassword.text.toString())
+//            sharedpref.puti(constants.PREF_ID, it.data?.id?:0)
+//
+//            sharedpref.put(constants.PREF_IS_LOGIN, true)
 
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_loginFragment_to_menuActivity)
