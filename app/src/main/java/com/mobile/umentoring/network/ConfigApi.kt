@@ -28,5 +28,9 @@ interface ConfigApi {
         @Query("idUser") user: String
     ): Flowable<ResponseProfile>
 
+    @GET("participant/getProgramUser")
+    fun getApiProgramProfile(
+        @Query("participant_id") participant: String
+    ): Flowable<ResponseProgramProfile>
 
 }

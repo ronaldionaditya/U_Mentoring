@@ -94,19 +94,39 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
 
     }
 
+    //Menampilkan progressbar pada layout
+    private fun loading(it: Boolean?) {
+        if (it == true){
+            pbHomeProgram.visibility = View.VISIBLE
+            pbHomePortofolio.visibility = View.VISIBLE
+            pbHomeTestimoni.visibility = View.VISIBLE
+
+        }
+        if (it == false){
+            pbHomeProgram.visibility = View.GONE
+            pbHomePortofolio.visibility = View.GONE
+            pbHomeTestimoni.visibility = View.GONE
+        }
+    }
+
     //Todo observe dan pesan dari RecyclerView
     //Program
     private fun attachObserveProg() {
         view.successProg().observe(viewLifecycleOwner, Observer { showSuccessProg(it) })
         view.errorProg().observe(viewLifecycleOwner, Observer { showErrorProg(it) })
+
+        //Memanggil progressbar livedata dari viewmodel
+        //sudah include semuanya dari program, portofolio dan testimoni
+        view.progressBarLive().observe(viewLifecycleOwner, Observer { loading(it) })
     }
+
 
     private fun showErrorProg(it: Throwable?) {
         Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show()
     }
 
     private fun showSuccessProg(data: ResponseProgram?) {
-        Toast.makeText(context, "Success Prog", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "Success Prog", Toast.LENGTH_SHORT).show()
         var adapter = ProgramAdapter(data?.data)
         rvProgram.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
@@ -131,7 +151,7 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
     }
 
     private fun showSuccessPort(data: ResponsePortofolio?) {
-        Toast.makeText(context, "Success Port", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "Success Port", Toast.LENGTH_SHORT).show()
 
         var dataa = data?.data
         for (x: Int in dataa?.indices ?: 0..1) {
@@ -157,7 +177,7 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
     }
 
     private fun showSuccessTest(data: ResponseTestimoni?) {
-        Toast.makeText(context, "Success Test", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "Success Test", Toast.LENGTH_SHORT).show()
 
         var dataA = data?.data
         for (x: Int in dataA?.indices ?: 0..1) {

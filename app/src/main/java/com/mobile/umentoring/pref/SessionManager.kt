@@ -11,6 +11,7 @@ class SessionManager(val context : Context?) {
 
     var PREF_IS_LOGIN = "isLogin"
     var PREF_ID = "id"
+    var PREF_PART_ID = "participant_id"
     var PREF_EMAIL = "email"
 
     init {
@@ -29,6 +30,13 @@ class SessionManager(val context : Context?) {
         get() = pref?.getInt(PREF_ID, 0)
         set(id) {
             editor?.putInt(PREF_ID, id?:0)
+            editor?.commit()
+        }
+
+    var participant_id: Int?
+        get() = pref?.getInt(PREF_PART_ID, 0)
+        set(id) {
+            editor?.putInt(PREF_PART_ID, id?:0)
             editor?.commit()
         }
 

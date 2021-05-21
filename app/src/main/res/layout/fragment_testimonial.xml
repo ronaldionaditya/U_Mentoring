@@ -6,6 +6,7 @@
     tools:context=".view.TestimonialFragment">
 
     <ImageView
+        android:id="@+id/backTestimoni"
         android:layout_width="16dp"
         android:layout_height="14dp"
         android:layout_alignParentStart="true"

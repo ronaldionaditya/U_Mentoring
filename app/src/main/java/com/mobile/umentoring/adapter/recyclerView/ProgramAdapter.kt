@@ -39,7 +39,7 @@ class ProgramAdapter(val data: List<DataItem?>?) :
             .into(holder.img)
 
         holder.textTitle.text = data?.get(position)?.namaProgram
-        holder.textSub.text = data?.get(position)?.createdAt.toString()
+        holder.textSub.text = data?.get(position)?.id.toString()
 
         holder.itemView.setOnClickListener {
             val intent = Intent(holder.itemView.context, LeaderboardFragment::class.java)

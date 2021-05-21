@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/tvMyClass"
+        android:background="@drawable/background_edit">
+
+        <ImageView
+            android:id="@+id/ivImageProgram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/circle"
+            android:src="@drawable/uiux" />
+
+        <TextView
+            android:id="@+id/tvNamaProgram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="73dp"
+            android:layout_marginTop="14dp"
+            android:text="UI/UX Design Basic"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvAngkatan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="73dp"
+            android:layout_marginTop="38dp"
+            android:text="Batch of #1000 - Apr 2090"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="314dp"
+            android:layout_marginTop="27.97dp"
+            android:src="@drawable/panah" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

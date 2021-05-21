@@ -1,5 +1,7 @@
 package com.mobile.umentoring.viewModel
 
+
+import android.widget.ProgressBar
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,36 +22,44 @@ class ViewModel : ViewModel() {
     // Todo RecyclerView
     var repo = Repository()
 
+    //Home
     var successProg = MutableLiveData<ResponseProgram>()
     var errorProg = MutableLiveData<Throwable>()
-
     var successPort = MutableLiveData<ResponsePortofolio>()
     var errorPort = MutableLiveData<Throwable>()
-
     var successTest = MutableLiveData<ResponseTestimoni>()
     var errorTest = MutableLiveData<Throwable>()
 
+    //Profile
     var successProfile = MutableLiveData<ResponseProfile>()
     var errorProfile = MutableLiveData<Throwable>()
+
+    var succeessProgramProfile = MutableLiveData<ResponseProgramProfile>()
+    var errorProgramProfile = MutableLiveData<Throwable>()
+
+    //Todo ProgressBar
+    var progressBar = MutableLiveData<Boolean>()
 
     fun login(
         email: String,
         password: String
     ) {
-
+        progressBar.value = true
         if (email.isEmpty()) {
             emailKosong.value = true
+            progressBar.value = false
 
         } else if (password.isEmpty()) {
             passwordKosong.value = true
+            progressBar.value = false
 
         } else {
             repository.login(email, password, {
                 responLogin.value = it
-
+                progressBar.value = false
             }, {
                 errorLogin.value = it
-
+                progressBar.value = false
             })
         }
 
@@ -71,14 +81,22 @@ class ViewModel : ViewModel() {
         return responLogin
     }
 
+    //ProgressBar LiveData untuk dibawa ke Fragment
+    fun progressBarLive(): LiveData<Boolean>{
+        return progressBar
+    }
+
 
     //Todo panggil repo api RecyclerView
     //Program
     fun panggilApiProgram() {
+        progressBar.value = true
         repo.getApiProgram({
             successProg.value = it
+            progressBar.value = false
         }, {
             errorProg.value = it
+            progressBar.value = false
         })
     }
 
@@ -92,10 +110,13 @@ class ViewModel : ViewModel() {
 
     //Portofolio
     fun panggilApiPort() {
+        progressBar.value = true
         repo.getApiPortofolio({
             successPort.value = it
+            progressBar.value = false
         }, {
             errorPort.value = it
+
         })
     }
 
@@ -110,10 +131,13 @@ class ViewModel : ViewModel() {
 
     //Testimoni
     fun panggilApiTest() {
+        progressBar.value = true
         repo.getApiTestimoni({
             successTest.value = it
+            progressBar.value = false
         }, {
             errorTest.value = it
+            progressBar.value = false
         })
     }
 
@@ -126,12 +150,15 @@ class ViewModel : ViewModel() {
     }
 
 
-    //Profile
+    //Profile User
     fun panggilApiProfile(user: String) {
+        progressBar.value = true
         repo.getApiProfile(user, {
             successProfile.value = it
+            progressBar.value = false
         }, {
             errorProfile.value = it
+            progressBar.value = false
         })
     }
 
@@ -141,6 +168,23 @@ class ViewModel : ViewModel() {
 
     fun errorProfile(): LiveData<Throwable> {
         return errorProfile
+    }
+
+    //Profile Program
+    fun panggilApiProgramProfile(participant:String){
+        repo.getApiProgramProfile(participant,{
+            succeessProgramProfile.value = it
+        },{
+            errorProgramProfile.value = it
+        })
+    }
+
+    fun succeessProgramProfile(): LiveData<ResponseProgramProfile>{
+        return succeessProgramProfile
+    }
+
+    fun errorProgramProfile(): LiveData<Throwable>{
+        return errorProgramProfile
     }
 
 }

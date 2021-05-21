@@ -86,6 +86,16 @@ class LoginFragment : Fragment() {
         viewModel.loginError().observe(viewLifecycleOwner, Observer { loginError(it) })
         viewModel.emailIsEmpty().observe(viewLifecycleOwner, Observer { emailIsEmpty(it) })
         viewModel.passwordIsEmpty().observe(viewLifecycleOwner, Observer { passwordIsEmpty(it) })
+        viewModel.progressBarLive().observe(viewLifecycleOwner, Observer { loading(it) })
+    }
+
+    private fun loading(it: Boolean?) {
+        if (it == true){
+            progressLoading.visibility=View.VISIBLE
+        }
+        if (it == false){
+            progressLoading.visibility=View.GONE
+        }
     }
 
 
@@ -105,6 +115,7 @@ class LoginFragment : Fragment() {
 
             val session = SessionManager(requireContext())
             session.id = it.data?.id
+            session.participant_id = it.data?.participantId
             session.login = true
 
 //            var constants: Constants? = null

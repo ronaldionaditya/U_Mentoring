@@ -6,6 +6,7 @@
     tools:context=".view.PortfolioFragment">
 
     <ImageView
+        android:id="@+id/backPortofolio"
         android:layout_width="16dp"
         android:layout_height="14dp"
         android:layout_alignParentStart="true"

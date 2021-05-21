@@ -22,26 +22,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="302dp"
                 android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-               >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/ivSetting"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/setting"
-                    android:layout_marginEnd="25dp"/>
+                    android:layout_marginEnd="25dp"
+                    android:src="@drawable/setting" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivLogout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/logout"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/logout" />
 
 
             </LinearLayout>
 
+            <ProgressBar
+                android:id="@+id/pbProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:visibility="gone" />
 
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
@@ -52,13 +58,14 @@
                 android:src="@mipmap/ic_launcher"
                 app:civ_border_width="0dp" />
 
+
             <TextView
                 android:id="@+id/tvNamaProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Mesut Ozil"
+                android:text="Nama"
                 android:textColor="@color/white"
                 android:textSize="35sp" />
 
@@ -68,11 +75,10 @@
                 android:layout_height="19dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:text="“Alumni of batch #10000 - Apr 2090”"
+                android:text="Level"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
-
 
         </LinearLayout>
 
@@ -162,47 +168,15 @@
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
-            <RelativeLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvClassProfile"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_below="@+id/tvMyClass"
-                android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="30dp"
-                android:background="@drawable/background_edit">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/circle"
-                    android:src="@drawable/uiux" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="73dp"
-                    android:layout_marginTop="14dp"
-                    android:text="UI/UX Design Basic"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="73dp"
-                    android:layout_marginTop="38dp"
-                    android:text="Batch of #1000 - Apr 2090"
-                    android:textSize="12sp" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="314dp"
-                    android:layout_marginTop="27.97dp"
-                    android:src="@drawable/panah" />
-
-            </RelativeLayout>
+                android:layout_marginStart="30dp"
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_profile_class" />
 
         </RelativeLayout>
 
@@ -228,66 +202,21 @@
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPortofolioProfile"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:layout_below="@+id/tvPortfolio"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/background_portofolio">
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_profile_portofolio" />
 
-                <ImageView
-                    android:id="@+id/ivPortfolio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ig_portofolio" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="54dp"
-                    android:layout_height="54dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="20dp"
-                    android:background="@drawable/background_bulat"
-                    android:drawableStart="@drawable/play"
-                    android:paddingStart="23.5dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ivPortfolio"
-                    android:layout_marginStart="11dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Batch #01"
-                    android:textSize="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ivPortfolio"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="40dp"
-                    android:text="UI/UX Design"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ivPortfolio"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="59dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="Bassic Level"
-                    android:textColor="@color/black"
-                    android:textSize="16dp" />
-
-            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="153dp"
                 android:layout_height="187dp"
                 android:layout_below="@+id/tvPortfolio"
-                android:layout_marginStart="203dp"
+                android:layout_alignEnd="@id/rvPortofolioProfile"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/background_garis_putus_hijau">
 
@@ -327,58 +256,21 @@
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
-            <LinearLayout
-                android:layout_width="207dp"
-                android:layout_height="164dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTestimoniProfile"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
                 android:layout_below="@+id/tvTestimonial"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/background_leaderboard"
-                android:orientation="vertical">
-
-                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_testimoni"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="11dp"
-                    android:src="@mipmap/ic_launcher"
-                    app:civ_border_width="0dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="13dp"
-                    android:text="Alumni of batch #1"
-                    android:textSize="10sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="4dp"
-                    android:text="Mesut Ozil"
-                    android:textSize="16sp" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:layout_width="131dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/background_button_edit_hitam"
-                    android:text="Edit"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white" />
-
-            </LinearLayout>
+                android:orientation="horizontal"
+                tools:listitem="@layout/item_profile_testimoni" />
 
             <RelativeLayout
                 android:layout_width="207dp"
                 android:layout_height="164dp"
                 android:layout_below="@+id/tvTestimonial"
-                android:layout_marginStart="257dp"
-                android:layout_marginTop="12dp"
+                android:layout_alignEnd="@+id/rvTestimoniProfile"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/background_garis_putus_hijau">
 
                 <TextView
