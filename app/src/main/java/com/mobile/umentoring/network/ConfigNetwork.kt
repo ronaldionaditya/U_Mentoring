@@ -17,13 +17,13 @@ class ConfigNetwork {
 
             //interceptor untuk mengetahui error kalau komunikasi server
             val interceptor = HttpLoggingInterceptor()
-            interceptor.level  = HttpLoggingInterceptor.Level.BODY
+            interceptor.level = HttpLoggingInterceptor.Level.BODY
 
             val builder = OkHttpClient.Builder()
                 .addInterceptor(interceptor)
 
             val client = builder.build()
-            var constants: Constants?=null
+            var constants: Constants? = null
             constants = Constants()
 
             val retrofit = Retrofit.Builder()
@@ -37,32 +37,6 @@ class ConfigNetwork {
 
             return service
         }
-
-        fun getRetrofitParticipant(): ConfigApi {
-
-            //interceptor untuk mengetahui error kalau komunikasi server
-            val interceptor = HttpLoggingInterceptor()
-            interceptor.level  = HttpLoggingInterceptor.Level.BODY
-
-            val builder = OkHttpClient.Builder()
-                .addInterceptor(interceptor)
-
-            val client = builder.build()
-            var constants: Constants?=null
-            constants = Constants()
-
-            val retrofit = Retrofit.Builder()
-                .baseUrl(constants?.BASEURL_PARTICIPANT)
-                .client(client)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-                .build()
-
-            val service = retrofit.create(ConfigApi::class.java)
-
-            return service
-        }
-
 
     }
 

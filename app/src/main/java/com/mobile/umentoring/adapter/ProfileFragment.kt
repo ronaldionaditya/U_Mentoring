@@ -10,21 +10,20 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.Glide.init
 import com.mobile.umentoring.view.MainActivity
 import com.mobile.umentoring.R
-import com.mobile.umentoring.adapter.recyclerView.ProgramProfileAdapter
-import com.mobile.umentoring.model.DataItemProgramProfile
+import com.mobile.umentoring.adapter.recyclerView.Profile.PortofolioProfileAdapter
+import com.mobile.umentoring.adapter.recyclerView.Profile.ProgramProfileAdapter
+import com.mobile.umentoring.adapter.recyclerView.Profile.TestimoniProfileAdapter
+import com.mobile.umentoring.model.ResponsePortofolioProfile
 import com.mobile.umentoring.model.ResponseProfile
 import com.mobile.umentoring.model.ResponseProgramProfile
+import com.mobile.umentoring.model.ResponseTestimoniProfile
 import com.mobile.umentoring.pref.SessionManager
-import com.mobile.umentoring.repository.Repository
 import com.mobile.umentoring.viewModel.ViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
 
 import kotlinx.android.synthetic.main.fragment_profile.*
 
@@ -34,6 +33,7 @@ class ProfileFragment : Fragment() {
     var pref: SessionManager? = null
     var id: Int? = 0
     var participant_id: Int? = 0
+    var user_id: Int? = 0
     lateinit var view: ViewModel
 
     override fun onCreateView(
@@ -60,10 +60,16 @@ class ProfileFragment : Fragment() {
             participant_id = pref?.participant_id
         }
 
-
-        //panggil api dari viewmodel
+        //panggil id api dari viewmodel
+        Toast.makeText(context, "Id :"+participant_id, Toast.LENGTH_SHORT).show()
         view.panggilApiProfile(id.toString())
         view.panggilApiProgramProfile(participant_id.toString())
+//        view.panggilApiPortofolioProfile(participant_id.toString())
+        //TODO masih menggunakan id manual tidak dari api
+        //nanti tinggal diganti ke api
+        view.panggilApiPortofolioProfile("1560")
+        view.panggilApiTestimoniProfile("923")
+
 
         ivLogout.setOnClickListener {
             Toast.makeText(requireContext(), "click", Toast.LENGTH_SHORT).show()
@@ -80,7 +86,6 @@ class ProfileFragment : Fragment() {
 //            Navigation.findNavController(it)
 //                .navigate(R.id.action_profileFragment2_to_testimonialFragment)
 //        }
-
 
     }
 
@@ -107,15 +112,26 @@ class ProfileFragment : Fragment() {
             .observe(viewLifecycleOwner, Observer { showSuccessProgramProfile(it) })
         view.errorProgramProfile()
             .observe(viewLifecycleOwner, Observer { showErrorProgramProfile(it) })
+
+        view.succeessPortofolioProfile()
+            .observe(viewLifecycleOwner, Observer { showSuccessPortofolioProfile(it) })
+        view.errorPortofolioProfile()
+            .observe(viewLifecycleOwner, Observer { showErrorPortofolioProfile(it) })
+
+        view.successTestimoniProfile()
+            .observe(viewLifecycleOwner, Observer { showSuccessTestimoniProfile(it) })
+        view.errorTestimoniProfile()
+            .observe(viewLifecycleOwner, Observer { showErrorTestimoniProfile(it) })
     }
 
+
+    //User
     private fun showErrorProfile(it: Throwable?) {
         Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
     }
 
     private fun showSuccessProfile(data: ResponseProfile) {
 //        Toast.makeText(context, "Success Profile", Toast.LENGTH_SHORT).show()
-
 
         tvNamaProfile.text = data.data?.name
         tvLevelProfile.text = data.data?.level
@@ -124,25 +140,55 @@ class ProfileFragment : Fragment() {
             .into(profile_image)
     }
 
-
+    //Program/Class
     private fun showErrorProgramProfile(it: Throwable?) {
         Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
     }
 
-    //TODO YANG BELUM SIAP
     private fun showSuccessProgramProfile(it: ResponseProgramProfile?) {
-        Toast.makeText(context, "Success Profile", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(context, "Success Profile", Toast.LENGTH_SHORT).show()
 
-        //TODO TANYA DA NANDO MODEL BERMASALAH
         var logss = it?.data
         Log.e("dataaaaaaa", "$logss")
-
 
         var adapter = ProgramProfileAdapter(it?.data)
         rvClassProfile.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvClassProfile.adapter = adapter
 
+    }
+
+    //Portofolio
+    private fun showErrorPortofolioProfile(it: Throwable?) {
+        Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showSuccessPortofolioProfile(it: ResponsePortofolioProfile?) {
+        Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
+        var logss = it?.data
+        Log.e("dataaaa portofolio", "$logss")
+
+        var adapter = PortofolioProfileAdapter(it?.data)
+        rvPortofolioProfile.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvPortofolioProfile.adapter = adapter
+    }
+
+    //Testimoni
+    private fun showErrorTestimoniProfile(it: Throwable?) {
+        Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showSuccessTestimoniProfile(it: ResponseTestimoniProfile?) {
+        Toast.makeText(context, "Success Testimoni", Toast.LENGTH_SHORT).show()
+        var logs = it?.data
+        Log.e("dataa testimoni", "$logs")
+
+        var adapter = TestimoniProfileAdapter(it?.data)
+
+        rvTestimoniProfile.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvTestimoniProfile.adapter = adapter
     }
 
 }

@@ -1,18 +1,16 @@
-package com.mobile.umentoring.adapter.recyclerView
+package com.mobile.umentoring.adapter.recyclerView.Profile
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mobile.umentoring.R
 import com.mobile.umentoring.model.DataItemProgramProfile
-import com.mobile.umentoring.model.ResponseProgramProfile
 
-class ProgramProfileAdapter(val data: DataItemProgramProfile?) :
+class ProgramProfileAdapter(val data: List<DataItemProgramProfile?>?) :
     RecyclerView.Adapter<ProgramProfileAdapter.ProgramProfileHolder>() {
     class ProgramProfileHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageProgram = itemView.findViewById<ImageView>(R.id.ivImageProgram)
@@ -29,14 +27,13 @@ class ProgramProfileAdapter(val data: DataItemProgramProfile?) :
 
     override fun onBindViewHolder(holder: ProgramProfileHolder, position: Int) {
         Glide.with(holder.itemView.context)
-            .load(data?.program?.programImage)
+            .load(data?.get(position)?.program?.programImage)
             .into(holder.imageProgram)
-        holder.namaProgram.text = data?.program?.namaProgram
-        holder.angkatanProgram.text = data?.angkatan
+        holder.namaProgram.text = data?.get(position)?.program?.namaProgram
+        holder.angkatanProgram.text = data?.get(position)?.angkatan
     }
 
     override fun getItemCount(): Int {
-        //TODO SALAH DISINI DATA TIDAK ARRAY
-        return  0
+        return data?.size ?: 0
     }
 }

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class ResponseProgramProfile(
 
 	@field:SerializedName("data")
-	val data: DataItemProgramProfile? = null,
+	val data: List<DataItemProgramProfile?>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,

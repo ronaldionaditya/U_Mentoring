@@ -1,4 +1,4 @@
-package com.mobile.umentoring.adapter.recyclerView
+package com.mobile.umentoring.adapter.recyclerView.Home
 
 import android.view.LayoutInflater
 import android.view.View

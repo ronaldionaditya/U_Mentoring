@@ -37,6 +37,14 @@ class ViewModel : ViewModel() {
     var succeessProgramProfile = MutableLiveData<ResponseProgramProfile>()
     var errorProgramProfile = MutableLiveData<Throwable>()
 
+    var succeessPortofolioProfile = MutableLiveData<ResponsePortofolioProfile>()
+    var errorPortofolioProfile = MutableLiveData<Throwable>()
+
+    var succeessTestimoniProfile = MutableLiveData<ResponseTestimoniProfile>()
+    var errorTestimoniProfile = MutableLiveData<Throwable>()
+
+
+
     //Todo ProgressBar
     var progressBar = MutableLiveData<Boolean>()
 
@@ -186,5 +194,41 @@ class ViewModel : ViewModel() {
     fun errorProgramProfile(): LiveData<Throwable>{
         return errorProgramProfile
     }
+
+    //Profile Portofolio
+    fun panggilApiPortofolioProfile(participantPort:String){
+        repo.getApiPortofolioProfile(participantPort,{
+            succeessPortofolioProfile.value = it
+        },{
+            errorPortofolioProfile.value = it
+        })
+    }
+
+    fun succeessPortofolioProfile(): LiveData<ResponsePortofolioProfile>{
+        return succeessPortofolioProfile
+    }
+
+    fun errorPortofolioProfile(): LiveData<Throwable>{
+        return errorPortofolioProfile
+    }
+
+    //Profile Testimoni
+    fun panggilApiTestimoniProfile(userTest:String){
+        repo.getApiTestimoniProfile(userTest,{
+            succeessTestimoniProfile.value = it
+        },{
+            errorTestimoniProfile.value = it
+        })
+    }
+
+    fun successTestimoniProfile(): LiveData<ResponseTestimoniProfile>{
+        return succeessTestimoniProfile
+    }
+
+    fun errorTestimoniProfile(): LiveData<Throwable>{
+        return errorTestimoniProfile
+    }
+
+
 
 }

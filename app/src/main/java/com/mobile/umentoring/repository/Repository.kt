@@ -91,4 +91,32 @@ class Repository {
             })
     }
 
+    fun getApiPortofolioProfile(
+        participantPort:String,
+        responseSuccess: (ResponsePortofolioProfile) -> Unit,
+        responseError: (Throwable) -> Unit
+    ){
+        ConfigNetwork.getRetrofit().getApiPortofolioProfile(participantPort).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseSuccess(it)
+            },{
+                responseError(it)
+            })
+    }
+
+    fun getApiTestimoniProfile(
+        userTest : String,
+        responseSuccess: (ResponseTestimoniProfile) -> Unit,
+        responseError: (Throwable) -> Unit
+    ){
+        ConfigNetwork.getRetrofit().getApiTestimoniProfile(userTest).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseSuccess(it)
+            },{
+                responseError(it)
+            })
+    }
+
 }

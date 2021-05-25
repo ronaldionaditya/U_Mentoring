@@ -7,8 +7,6 @@
         android:layout_width="207dp"
         android:layout_height="164dp"
         android:layout_below="@+id/tvTestimonial"
-
-        android:layout_marginTop="20dp"
         android:background="@drawable/background_leaderboard"
         android:orientation="vertical">
 
@@ -22,6 +20,7 @@
             app:civ_border_width="0dp" />
 
         <TextView
+            android:id="@+id/tvBatchTest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -30,6 +29,7 @@
             android:textSize="10sp" />
 
         <TextView
+            android:id="@+id/tvNameTest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

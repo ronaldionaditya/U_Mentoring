@@ -33,4 +33,14 @@ interface ConfigApi {
         @Query("participant_id") participant: String
     ): Flowable<ResponseProgramProfile>
 
+    @GET("participant/getPortofolio")
+    fun getApiPortofolioProfile(
+        @Query("participant_id") participantPort: String
+    ): Flowable<ResponsePortofolioProfile>
+
+    @GET("participant/getTestimoni")
+    fun getApiTestimoniProfile(
+        @Query("user_id") userTest: String
+    ): Flowable<ResponseTestimoniProfile>
+
 }

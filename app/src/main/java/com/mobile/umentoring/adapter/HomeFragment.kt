@@ -17,9 +17,10 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView
 import com.daimajia.slider.library.SliderTypes.TextSliderView
 import com.daimajia.slider.library.Tricks.ViewPagerEx
 import com.mobile.umentoring.R
-import com.mobile.umentoring.adapter.recyclerView.PortofolioAdapter
-import com.mobile.umentoring.adapter.recyclerView.ProgramAdapter
-import com.mobile.umentoring.adapter.recyclerView.TestimoniAdapter
+import com.mobile.umentoring.adapter.recyclerView.Home.PortofolioAdapter
+import com.mobile.umentoring.adapter.recyclerView.Home.ProgramAdapter
+import com.mobile.umentoring.adapter.recyclerView.Home.TestimoniAdapter
+import com.mobile.umentoring.cons.Constants
 import com.mobile.umentoring.model.*
 import com.mobile.umentoring.viewModel.ViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -29,9 +30,9 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
     ViewPagerEx.OnPageChangeListener {
 
     lateinit var view: ViewModel
+    lateinit var conts : Constants
 
     private var listProgram: RecyclerView? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,15 +48,12 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
         //Todo deklarasi viewmodel
         view = ViewModelProviders.of(this).get(ViewModel::class.java)
 
-        attachObserveProg()
-        attachObservePort()
-        attachObserveTest()
+        attachObserveHome()
 
         //Todo panggil api
         view.panggilApiProgram()
         view.panggilApiPort()
         view.panggilApiTest()
-
 
 
         val url_maps = HashMap<String, String>()
@@ -69,6 +67,7 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
 //        file_maps["Big Bang Theory"] = R.drawable.slider_tiga
 //        file_maps["House of Cards"] = R.drawable.slider_empat
 //        file_maps["Game of Thrones"] = R.drawable.slider_lima
+
 
         for (name in url_maps.keys) {
             val textSliderView = TextSliderView(context)
@@ -111,15 +110,20 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
 
     //Todo observe dan pesan dari RecyclerView
     //Program
-    private fun attachObserveProg() {
+    private fun attachObserveHome() {
         view.successProg().observe(viewLifecycleOwner, Observer { showSuccessProg(it) })
         view.errorProg().observe(viewLifecycleOwner, Observer { showErrorProg(it) })
 
         //Memanggil progressbar livedata dari viewmodel
         //sudah include semuanya dari program, portofolio dan testimoni
         view.progressBarLive().observe(viewLifecycleOwner, Observer { loading(it) })
-    }
 
+        view.successPort().observe(viewLifecycleOwner, Observer { showSuccessPort(it) })
+        view.errorPort().observe(viewLifecycleOwner, Observer { showErrorPort(it) })
+
+        view.successTest().observe(viewLifecycleOwner, Observer { showSuccessTest(it) })
+        view.errorTest().observe(viewLifecycleOwner, Observer { showErrorTest(it) })
+    }
 
     private fun showErrorProg(it: Throwable?) {
         Toast.makeText(context, "Salah", Toast.LENGTH_SHORT).show()
@@ -138,13 +142,7 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
         listProgram?.adapter = ProgramAdapter(data)
     }
 
-
     //Portofolio
-    private fun attachObservePort() {
-        view.successPort().observe(viewLifecycleOwner, Observer { showSuccessPort(it) })
-        view.errorPort().observe(viewLifecycleOwner, Observer { showErrorPort(it) })
-    }
-
     private fun showErrorPort(it: Throwable?) {
         Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
         Log.e("Error Port", it?.localizedMessage ?: "")
@@ -163,19 +161,10 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
                 LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
             rvPortofolio.adapter = adapter
         }
-//        showDataPort(dataa?.get(0)?.participant)
-    }
-//    private fun showDataPort(data: List<Participant?>?) {
-//        listPortofolio?.adapter = PortofolioAdapter(data)
-//    }
 
+    }
 
     //Testimoni
-    private fun attachObserveTest() {
-        view.successTest().observe(viewLifecycleOwner, Observer { showSuccessTest(it) })
-        view.errorTest().observe(viewLifecycleOwner, Observer { showErrorTest(it) })
-    }
-
     private fun showSuccessTest(data: ResponseTestimoni?) {
 //        Toast.makeText(context, "Success Test", Toast.LENGTH_SHORT).show()
 

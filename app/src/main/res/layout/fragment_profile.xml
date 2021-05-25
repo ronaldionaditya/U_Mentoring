@@ -173,8 +173,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 android:layout_below="@+id/tvMyClass"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
                 tools:listitem="@layout/item_profile_class" />
 
@@ -202,35 +202,40 @@
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvPortofolioProfile"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@+id/tvPortfolio"
-                android:layout_marginStart="30dp"
-                android:orientation="horizontal"
-                tools:listitem="@layout/item_profile_portofolio" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
-
-            <RelativeLayout
-                android:layout_width="153dp"
-                android:layout_height="187dp"
-                android:layout_below="@+id/tvPortfolio"
-                android:layout_alignEnd="@id/rvPortofolioProfile"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/background_garis_putus_hijau">
-
-                <TextView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPortofolioProfile"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:drawableStart="@drawable/plus"
-                    android:drawablePadding="19.5dp"
-                    android:text="Add Portfolio"
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/tvPortfolio"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_profile_portofolio" />
 
-                    />
 
-            </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="153dp"
+                    android:layout_height="187dp"
+                    android:background="@drawable/background_garis_putus_hijau">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawableStart="@drawable/plus"
+                        android:drawablePadding="19.5dp"
+                        android:text="Add Portfolio"
+
+                        />
+
+                </RelativeLayout>
+            </LinearLayout>
         </RelativeLayout>
 
         <RelativeLayout
@@ -256,32 +261,40 @@
                 android:textColor="@color/black"
                 android:textSize="14sp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvTestimoniProfile"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_below="@+id/tvTestimonial"
-                android:layout_marginStart="30dp"
-                android:orientation="horizontal"
-                tools:listitem="@layout/item_profile_testimoni" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
-            <RelativeLayout
-                android:layout_width="207dp"
-                android:layout_height="164dp"
-                android:layout_below="@+id/tvTestimonial"
-                android:layout_alignEnd="@+id/rvTestimoniProfile"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/background_garis_putus_hijau">
-
-                <TextView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTestimoniProfile"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:drawableStart="@drawable/plus"
-                    android:drawablePadding="19.5dp"
-                    android:text="Add Testimonial" />
+                    android:layout_height="200dp"
+                    android:layout_below="@+id/tvTestimonial"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal"
+                    tools:listitem="@layout/item_profile_testimoni" />
 
-            </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="207dp"
+                    android:layout_height="164dp"
+                    android:layout_below="@+id/tvTestimonial"
+                    android:background="@drawable/background_garis_putus_hijau">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:drawableStart="@drawable/plus"
+                        android:drawablePadding="19.5dp"
+                        android:text="Add Testimonial" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
 
         </RelativeLayout>
 
