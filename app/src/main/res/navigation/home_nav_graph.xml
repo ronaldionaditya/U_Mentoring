@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.mobile.umentoring.adapter.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_leaderboardFragment2"
+            app:destination="@id/leaderboardFragment2" />
+    </fragment>
     <fragment
         android:id="@+id/infoFragment"
         android:name="com.mobile.umentoring.adapter.InfoFragment"
@@ -34,6 +38,9 @@
         <action
             android:id="@+id/action_profileFragment2_to_testimonialFragment"
             app:destination="@id/testimonialFragment" />
+        <action
+            android:id="@+id/action_profileFragment2_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment2"
@@ -56,6 +63,24 @@
         tools:layout="@layout/fragment_testimonial" >
         <action
             android:id="@+id/action_testimonialFragment_to_profileFragment2"
+            app:destination="@id/profileFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/leaderboardFragment2"
+        android:name="com.mobile.umentoring.view.LeaderboardFragment"
+        android:label="fragment_leaderboard"
+        tools:layout="@layout/fragment_leaderboard" >
+        <action
+            android:id="@+id/action_leaderboardFragment2_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.mobile.umentoring.view.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" >
+        <action
+            android:id="@+id/action_scoreFragment_to_profileFragment2"
             app:destination="@id/profileFragment2" />
     </fragment>
 </navigation>

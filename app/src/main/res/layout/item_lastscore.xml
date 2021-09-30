@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -12,6 +13,7 @@
         android:background="@drawable/background_last_score">
 
         <TextView
+            android:id="@+id/tvNomorMyScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
@@ -23,6 +25,7 @@
             android:textSize="40sp" />
 
         <TextView
+            android:id="@+id/tvClassScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="49dp"
@@ -32,6 +35,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/tvLevelScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="49dp"
@@ -41,6 +45,7 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/tvTotalScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="304dp"

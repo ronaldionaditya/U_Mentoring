@@ -28,6 +28,11 @@ class ForgotFragment : Fragment() {
             Navigation.findNavController(it)
                 .navigate(R.id.action_forgotFragment_to_loginFragment)
         }
+
+        btnResetPassword.setOnClickListener{
+            Navigation.findNavController(it)
+                .navigate(R.id.action_forgotFragment_to_resetFragment)
+        }
     }
 
 }

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.daimajia.slider.library.Animations.DescriptionAnimation
@@ -43,6 +44,7 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
+        
         super.onActivityCreated(savedInstanceState)
 
         //Todo deklarasi viewmodel
@@ -55,12 +57,11 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
         view.panggilApiPort()
         view.panggilApiTest()
 
-
         val url_maps = HashMap<String, String>()
-        url_maps["Hannibal"] = "http://mentoring.barajacoding.or.id/slider/2.jpg"
-        url_maps["Big Bang Theory"] = "http://mentoring.barajacoding.or.id/slider/3.jpg"
-        url_maps["House of Cards"] = "http://mentoring.barajacoding.or.id/slider/4.jpg"
-        url_maps["Game of Thrones"] = "http://mentoring.barajacoding.or.id/slider/5.jpg"
+        url_maps["Belajar Koding"] = "http://mentoring.barajacoding.or.id/slider/2.jpg"
+        url_maps["Jago Ngoding"] = "http://mentoring.barajacoding.or.id/slider/3.jpg"
+        url_maps["Training Udacoding"] = "http://mentoring.barajacoding.or.id/slider/4.jpg"
+        url_maps["Mentoring Udacoding"] = "http://mentoring.barajacoding.or.id/slider/5.jpg"
 
 //        val file_maps = HashMap<String, Int>()
 //        file_maps["Hannibal"] = R.drawable.slider_dua
@@ -90,6 +91,10 @@ class HomeFragment : Fragment(), BaseSliderView.OnSliderClickListener,
         slider.setDuration(5000)
         slider.addOnPageChangeListener(this)
 
+        tvSeeAllLeaderboard.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_homeFragment_to_leaderboardFragment2)
+        }
 
     }
 

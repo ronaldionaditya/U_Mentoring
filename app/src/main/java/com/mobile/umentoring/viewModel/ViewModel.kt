@@ -43,7 +43,14 @@ class ViewModel : ViewModel() {
     var succeessTestimoniProfile = MutableLiveData<ResponseTestimoniProfile>()
     var errorTestimoniProfile = MutableLiveData<Throwable>()
 
+    var succeessLeaderboard = MutableLiveData<ResponseLeaderboard>()
+    var errorLeaderboard = MutableLiveData<Throwable>()
 
+    var succeessTotalScore = MutableLiveData<ResponseTotalScore>()
+    var errorTotalScore= MutableLiveData<Throwable>()
+
+    var succeessMyScore = MutableLiveData<ResponseMyScore>()
+    var errorMyScore= MutableLiveData<Throwable>()
 
     //Todo ProgressBar
     var progressBar = MutableLiveData<Boolean>()
@@ -90,7 +97,7 @@ class ViewModel : ViewModel() {
     }
 
     //ProgressBar LiveData untuk dibawa ke Fragment
-    fun progressBarLive(): LiveData<Boolean>{
+    fun progressBarLive(): LiveData<Boolean> {
         return progressBar
     }
 
@@ -179,56 +186,109 @@ class ViewModel : ViewModel() {
     }
 
     //Profile Program
-    fun panggilApiProgramProfile(participant:String){
-        repo.getApiProgramProfile(participant,{
+    fun panggilApiProgramProfile(participant: String) {
+        repo.getApiProgramProfile(participant, {
             succeessProgramProfile.value = it
-        },{
+        }, {
             errorProgramProfile.value = it
         })
     }
 
-    fun succeessProgramProfile(): LiveData<ResponseProgramProfile>{
+    fun succeessProgramProfile(): LiveData<ResponseProgramProfile> {
         return succeessProgramProfile
     }
 
-    fun errorProgramProfile(): LiveData<Throwable>{
+    fun errorProgramProfile(): LiveData<Throwable> {
         return errorProgramProfile
     }
 
     //Profile Portofolio
-    fun panggilApiPortofolioProfile(participantPort:String){
-        repo.getApiPortofolioProfile(participantPort,{
+    fun panggilApiPortofolioProfile(participantPort: String) {
+        repo.getApiPortofolioProfile(participantPort, {
             succeessPortofolioProfile.value = it
-        },{
+        }, {
             errorPortofolioProfile.value = it
         })
     }
 
-    fun succeessPortofolioProfile(): LiveData<ResponsePortofolioProfile>{
+    fun succeessPortofolioProfile(): LiveData<ResponsePortofolioProfile> {
         return succeessPortofolioProfile
     }
 
-    fun errorPortofolioProfile(): LiveData<Throwable>{
+    fun errorPortofolioProfile(): LiveData<Throwable> {
         return errorPortofolioProfile
     }
 
     //Profile Testimoni
-    fun panggilApiTestimoniProfile(userTest:String){
-        repo.getApiTestimoniProfile(userTest,{
+    fun panggilApiTestimoniProfile(userTest: String) {
+        repo.getApiTestimoniProfile(userTest, {
             succeessTestimoniProfile.value = it
-        },{
+        }, {
             errorTestimoniProfile.value = it
         })
     }
 
-    fun successTestimoniProfile(): LiveData<ResponseTestimoniProfile>{
+    fun successTestimoniProfile(): LiveData<ResponseTestimoniProfile> {
         return succeessTestimoniProfile
     }
 
-    fun errorTestimoniProfile(): LiveData<Throwable>{
+    fun errorTestimoniProfile(): LiveData<Throwable> {
         return errorTestimoniProfile
     }
 
+    //Leaderboard
+    fun panggilApiLeaderboard() {
+        repo.getApiLeaderboard({
+            succeessLeaderboard.value = it
+        }, {
+            errorLeaderboard.value = it
+        })
+    }
 
+    fun successLeaderboard(): LiveData<ResponseLeaderboard> {
+        return succeessLeaderboard
+    }
+
+    fun errorLeaderboard(): LiveData<Throwable> {
+        return errorLeaderboard
+    }
+
+
+    //My Score
+    fun panggilApiTotalScore(participantTotal : String){
+        repo.getApiTotalScore(participantTotal,{
+            succeessTotalScore.value = it
+        },{
+            errorTotalScore.value = it
+        })
+    }
+
+    fun successTotalScore(): LiveData<ResponseTotalScore>{
+        return succeessTotalScore
+    }
+
+    fun errorTotalScore():LiveData<Throwable>{
+        return errorTotalScore
+    }
+
+
+//    //My Score
+//    fun panggilApiMyScore(participantMyScore : String){
+//        repo.getApiMyScore(participantMyScore,{
+//            succeessMyScore.value = it
+//        },{
+//            errorMyScore.value = it
+//        })
+//    }
+//
+//    fun successMyScore(): LiveData<ResponseMyScore>{
+//        return succeessMyScore
+//    }
+//
+//    fun errorMyScore():LiveData<Throwable>{
+//        return errorMyScore
+//    }
+
+    
 
 }

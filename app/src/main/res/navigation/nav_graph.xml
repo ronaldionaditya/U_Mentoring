@@ -34,5 +34,17 @@
         <action
             android:id="@+id/action_forgotFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_forgotFragment_to_resetFragment"
+            app:destination="@id/resetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resetFragment"
+        android:name="com.mobile.umentoring.view.ResetFragment"
+        android:label="fragment_reset"
+        tools:layout="@layout/fragment_reset" >
+        <action
+            android:id="@+id/action_resetFragment_to_forgotFragment"
+            app:destination="@id/forgotFragment" />
     </fragment>
 </navigation>

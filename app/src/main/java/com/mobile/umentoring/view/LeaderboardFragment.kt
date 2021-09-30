@@ -8,11 +8,25 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.mobile.umentoring.R
+import com.mobile.umentoring.adapter.recyclerView.Home.LeaderboardAdapter
+import com.mobile.umentoring.adapter.recyclerView.Home.TestimoniAdapter
+import com.mobile.umentoring.adapter.recyclerView.Profile.PortofolioProfileAdapter
+import com.mobile.umentoring.model.ResponseLeaderboard
+import com.mobile.umentoring.viewModel.ViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_leaderboard.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 @Suppress("UNREACHABLE_CODE")
 class LeaderboardFragment : Fragment() {
+
+    lateinit var view: ViewModel
+    var id: Int? = 0
 
     val kelas = arrayOf("All Class","Flutter", "Kotlin", "UiDesign", "Web", "English", "Kotlin II", "Flutter II")
     val batch = arrayOf("All Batch","1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
@@ -23,6 +37,21 @@ class LeaderboardFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_leaderboard, container, false)
 
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        view = ViewModelProvider(this)[ViewModel::class.java]
+
+        attachObserveLeaderboard()
+
+        view.panggilApiLeaderboard()
+
+        ivBackLeaderboard.setOnClickListener {
+            Navigation.findNavController(it)
+                .navigate(R.id.action_leaderboardFragment2_to_homeFragment)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,9 +91,26 @@ class LeaderboardFragment : Fragment() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
-
         }
-
-
     }
+
+    private fun attachObserveLeaderboard(){
+        view.successLeaderboard().observe(viewLifecycleOwner, Observer { showSuccessLeaderboard(it) })
+        view.errorLeaderboard().observe(viewLifecycleOwner, Observer { showErrorLeaderboard(it) })
+    }
+
+    private fun showErrorLeaderboard(it: Throwable?) {
+        Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showSuccessLeaderboard(it: ResponseLeaderboard?) {
+        Toast.makeText(context, it?.message, Toast.LENGTH_SHORT).show()
+
+        var adapter = LeaderboardAdapter(it?.data)
+        rvLeaderboard.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rvLeaderboard.adapter = adapter
+    }
+
+
 }

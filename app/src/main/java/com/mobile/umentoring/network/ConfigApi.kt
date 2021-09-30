@@ -43,4 +43,23 @@ interface ConfigApi {
         @Query("user_id") userTest: String
     ): Flowable<ResponseTestimoniProfile>
 
+    @GET("grade/getLeaderBoard")
+    fun getApiLeaderboard(): Flowable<ResponseLeaderboard>
+
+    @GET("grade/getLeaderBoardByUser")
+    fun getApiTotalScore(
+        @Query("participant_id") participantTotal: String
+    ): Flowable<ResponseTotalScore>
+
+
+//    @GET("grade/getLeaderBoardByUser")
+//    fun getApiMyScore(
+//        @Query("participant_id") participantScore: String
+//    ): Flowable<ResponseMyScore>
+//
+//
+
+
+
+
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/white">
 
     <RelativeLayout
         android:layout_width="207dp"
@@ -27,6 +28,7 @@
             android:layout_width="131dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="70dp"
+            android:textColor="@color/black"
             android:layout_marginTop="10dp"
             android:text="UI/UX Design"
             android:textSize="16sp" />
@@ -35,9 +37,10 @@
             android:id="@+id/tvTextSub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="70dp"
             android:layout_below="@+id/tvTextTitle"
+            android:layout_marginStart="70dp"
             android:layout_marginTop="5dp"
+            android:textColor="@color/black"
             android:text="Basic Level"
             android:textSize="12sp" />
 

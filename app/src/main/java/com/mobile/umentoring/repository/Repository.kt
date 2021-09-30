@@ -119,4 +119,47 @@ class Repository {
             })
     }
 
+    //Leaderboard
+    fun getApiLeaderboard(
+        responseSuccess: (ResponseLeaderboard) -> Unit,
+        responseError: (Throwable) -> Unit
+    ){
+        ConfigNetwork.getRetrofit().getApiLeaderboard().subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseSuccess(it)
+            },{
+                responseError(it)
+            })
+    }
+
+    fun getApiTotalScore(
+        participantTotal : String,
+        responseSuccess: (ResponseTotalScore) -> Unit,
+        responseError: (Throwable) -> Unit
+    ){
+        ConfigNetwork.getRetrofit().getApiTotalScore(participantTotal).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                responseSuccess(it)
+            },{
+                responseError(it)
+            })
+    }
+
+
+//    fun getApiMyScore(
+//        participantMyScore : String,
+//        responseSuccess: (ResponseMyScore) -> Unit,
+//        responseError: (Throwable) -> Unit
+//    ){
+//        ConfigNetwork.getRetrofit().getApiMyScore(participantMyScore).subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe({
+//                responseSuccess(it)
+//            },{
+//                responseError(it)
+//            })
+//    }
+
 }

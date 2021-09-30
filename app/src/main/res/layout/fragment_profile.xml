@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".adapter.ProfileFragment">
 
@@ -20,7 +21,7 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="302dp"
+                android:layout_marginStart="290dp"
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal">
 
@@ -93,8 +94,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
                 android:layout_marginStart="40dp"
-                android:layout_marginTop="21dp"
                 android:text="200"
                 android:textColor="@color/hijauLogo"
                 android:textSize="30sp" />
@@ -102,7 +104,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="49dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="52dp"
                 android:layout_marginTop="65dp"
                 android:text="Class"
                 android:textColor="@color/abuabu"
@@ -111,8 +114,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="148dp"
-                android:layout_marginTop="21dp"
+                android:layout_centerInParent="true"
                 android:text="200"
                 android:textColor="@color/hijauLogo"
                 android:textSize="30sp" />
@@ -120,7 +122,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="151dp"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="65dp"
                 android:text="Portfolio"
                 android:textColor="@color/abuabu"
@@ -129,7 +131,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="256dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="40dp"
                 android:layout_marginTop="21dp"
                 android:text="200"
                 android:textColor="@color/hijauLogo"
@@ -138,8 +141,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="259dp"
+                android:layout_alignParentEnd="true"
                 android:layout_marginTop="65dp"
+                android:layout_marginEnd="42dp"
                 android:text="The Best"
                 android:textColor="@color/abuabu"
                 android:textSize="12sp" />
@@ -163,7 +167,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="337dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"
                 android:text="See All"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
@@ -197,7 +202,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="337dp"
+                android:layout_marginEnd="30dp"
+                android:layout_alignParentEnd="true"
                 android:text="See All"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
@@ -256,7 +262,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="337dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="30dp"
                 android:text="See All"
                 android:textColor="@color/black"
                 android:textSize="14sp" />

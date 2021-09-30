@@ -1,7 +1,10 @@
 package com.mobile.umentoring.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class ResponseProgramProfile(
 
 	@field:SerializedName("data")
@@ -12,26 +15,29 @@ data class ResponseProgramProfile(
 
 	@field:SerializedName("status")
 	val status: Boolean? = null
-)
+):Parcelable
 
+@Parcelize
 data class Program(
 
 	@field:SerializedName("nama_program")
 	val namaProgram: String? = null,
 
+	//diganti dengan string dari any
 	@field:SerializedName("updated_at")
-	val updatedAt: Any? = null,
+	val updatedAt: String? = null,
 
 	@field:SerializedName("created_at")
-	val createdAt: Any? = null,
+	val createdAt: String? = null,
 
 	@field:SerializedName("id")
 	val id: Int? = null,
 
 	@field:SerializedName("program_image")
 	val programImage: String? = null
-)
+):Parcelable
 
+@Parcelize
 data class DataItemProgramProfile(
 
 	@field:SerializedName("sekolah")
@@ -66,4 +72,4 @@ data class DataItemProgramProfile(
 
 	@field:SerializedName("email")
 	val email: String? = null
-)
+):Parcelable

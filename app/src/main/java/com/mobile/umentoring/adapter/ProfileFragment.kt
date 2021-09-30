@@ -18,10 +18,7 @@ import com.mobile.umentoring.R
 import com.mobile.umentoring.adapter.recyclerView.Profile.PortofolioProfileAdapter
 import com.mobile.umentoring.adapter.recyclerView.Profile.ProgramProfileAdapter
 import com.mobile.umentoring.adapter.recyclerView.Profile.TestimoniProfileAdapter
-import com.mobile.umentoring.model.ResponsePortofolioProfile
-import com.mobile.umentoring.model.ResponseProfile
-import com.mobile.umentoring.model.ResponseProgramProfile
-import com.mobile.umentoring.model.ResponseTestimoniProfile
+import com.mobile.umentoring.model.*
 import com.mobile.umentoring.pref.SessionManager
 import com.mobile.umentoring.viewModel.ViewModel
 
@@ -61,7 +58,7 @@ class ProfileFragment : Fragment() {
         }
 
         //panggil id api dari viewmodel
-        Toast.makeText(context, "Id :"+participant_id, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Id :" + participant_id, Toast.LENGTH_SHORT).show()
         view.panggilApiProfile(id.toString())
         view.panggilApiProgramProfile(participant_id.toString())
 //        view.panggilApiPortofolioProfile(participant_id.toString())
@@ -70,9 +67,8 @@ class ProfileFragment : Fragment() {
         view.panggilApiPortofolioProfile("1560")
         view.panggilApiTestimoniProfile("923")
 
-
         ivLogout.setOnClickListener {
-            Toast.makeText(requireContext(), "click", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireContext(), "click", Toast.LENGTH_SHORT).show()
             pref?.logout()
             moveIntent()
         }
@@ -82,11 +78,11 @@ class ProfileFragment : Fragment() {
                 .navigate(R.id.action_profileFragment2_to_profileUpdateFragment)
         }
 
+
 //        btnEditTestimoniProfile.setOnClickListener {
 //            Navigation.findNavController(it)
 //                .navigate(R.id.action_profileFragment2_to_testimonialFragment)
 //        }
-
     }
 
     private fun moveIntent() {
@@ -96,17 +92,18 @@ class ProfileFragment : Fragment() {
     private fun loading(it: Boolean?) {
         if (it == true) {
             pbProfile.visibility = View.VISIBLE
-
         }
+
         if (it == false) {
             pbProfile.visibility = View.GONE
         }
     }
 
     private fun attachObserveProfile() {
+        view.progressBarLive().observe(viewLifecycleOwner, Observer { loading(it) })
+
         view.successProfile().observe(viewLifecycleOwner, Observer { showSuccessProfile(it) })
         view.errorProfile().observe(viewLifecycleOwner, Observer { showErrorProfile(it) })
-        view.progressBarLive().observe(viewLifecycleOwner, Observer { loading(it) })
 
         view.succeessProgramProfile()
             .observe(viewLifecycleOwner, Observer { showSuccessProgramProfile(it) })
@@ -151,11 +148,20 @@ class ProfileFragment : Fragment() {
         var logss = it?.data
         Log.e("dataaaaaaa", "$logss")
 
-        var adapter = ProgramProfileAdapter(it?.data)
+        var adapter = ProgramProfileAdapter(it?.data, object : ProgramProfileAdapter.klik {
+            override fun a(data: DataItemProgramProfile?) {
+                val bundle = Bundle()
+                bundle.putParcelable("", data)
+                Navigation.findNavController(requireView())
+                    .navigate(R.id.action_profileFragment2_to_scoreFragment,bundle)
+
+            //                Toast.makeText(context, data?.program.toString(), Toast.LENGTH_SHORT).show()
+            }
+
+        })
         rvClassProfile.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvClassProfile.adapter = adapter
-
     }
 
     //Portofolio
@@ -185,7 +191,6 @@ class ProfileFragment : Fragment() {
         Log.e("dataa testimoni", "$logs")
 
         var adapter = TestimoniProfileAdapter(it?.data)
-
         rvTestimoniProfile.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rvTestimoniProfile.adapter = adapter

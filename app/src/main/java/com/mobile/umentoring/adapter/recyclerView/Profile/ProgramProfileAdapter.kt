@@ -10,7 +10,8 @@ import com.bumptech.glide.Glide
 import com.mobile.umentoring.R
 import com.mobile.umentoring.model.DataItemProgramProfile
 
-class ProgramProfileAdapter(val data: List<DataItemProgramProfile?>?) :
+class ProgramProfileAdapter(val data: List<DataItemProgramProfile?>?,
+    var dataRV : klik    ) :
     RecyclerView.Adapter<ProgramProfileAdapter.ProgramProfileHolder>() {
     class ProgramProfileHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var imageProgram = itemView.findViewById<ImageView>(R.id.ivImageProgram)
@@ -31,9 +32,21 @@ class ProgramProfileAdapter(val data: List<DataItemProgramProfile?>?) :
             .into(holder.imageProgram)
         holder.namaProgram.text = data?.get(position)?.program?.namaProgram
         holder.angkatanProgram.text = data?.get(position)?.angkatan
+
+        //holder untuk klik pada recyclerview
+        holder.itemView.setOnClickListener{
+            dataRV.a(data?.get(position))
+        }
     }
 
     override fun getItemCount(): Int {
         return data?.size ?: 0
     }
+
+    //TODO MENAMBAHKAN ONCLIK PADA RECYCLERVIEW
+    //ditambah bundle pada fragmentnya
+    interface klik{
+        fun a(data : DataItemProgramProfile?)
+    }
+
 }
